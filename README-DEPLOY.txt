@@ -332,3 +332,12 @@ DEPLOY KARTE WAQT (zaroori):
    Owner panel -> Projects me edit/add/delete kar sakte ho. Nakli "concept"
    projects ab default se band hain.
  - Netlify pe sab nayi files + /assets folder upload karna zaroori hai.
+
+=============================================================
+ 14) LINK FIX + PROJECT FALLBACK (2026-10-05)
+=============================================================
+ - Site "offline preview" mode har http(s) link (WhatsApp, project live
+   links) pe "copy this link" box dikhata tha. Ab links normal khulte hain.
+ - Agar /api/projects load na ho to ab bhi 3 asli projects dikhte hain
+   (window.__CUBIC_SEED_PROJECTS__). Lekin enquiry form tabhi chalega jab
+   /api chal raha ho -- <site>/api/projects browser me kholkar check karo.
