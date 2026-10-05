@@ -19,7 +19,8 @@ import {
 } from "node:crypto";
 
 // ---------- config ----------
-const SETUP_KEY = process.env.CUBIC_SETUP_KEY || "";
+// The sign-up form mentions OWNER_SETUP_KEY, so accept either variable name.
+const SETUP_KEY = process.env.CUBIC_SETUP_KEY || process.env.OWNER_SETUP_KEY || "";
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const EMAIL_FROM = process.env.EMAIL_FROM || "Cubic Studio <onboarding@resend.dev>";
 
