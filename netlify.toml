@@ -9,6 +9,19 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# sitemap.xml + robots.txt are generated per-domain by netlify/functions/seo.mjs
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/seo?f=sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/.netlify/functions/seo?f=robots"
+  status = 200
+  force = true
+
 # Route every /api/* call to the single backend function
 # (the function also declares path "/api/*" itself, so this is just a safety net)
 [[redirects]]
@@ -39,3 +52,15 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# API responses are never search results
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Share image: cache for a day
+[[headers]]
+  for = "/og-image.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
